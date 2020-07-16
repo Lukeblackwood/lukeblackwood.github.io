@@ -1,0 +1,59 @@
+:root {
+    /*This is the color palette (ignore errors)*/
+    --primary-color: #BB86FC;
+    --primary-color-var: #3700B3;
+    --secondary-color: #03DAC6;
+    --background-color: #000000;
+    --surface-color: #121212;
+    --error-color: #CF6679;
+    --on-primary-color: #000000;
+    --on-secondary-color: #000000;
+    --on-background-color: #FFFFFF;
+    --on-surface-color: #FFFFFF;
+    --on-error-color: #000000;
+}
+
+#sidebar {
+    background-color: var(--surface-color);
+    border-right: 1px solid;
+    border-right-color: var(--primary-color);
+    color: var(--on-background-color);
+}
+
+#sidebar > h1{
+    text-align: center;
+}
+
+#sidebar > p{
+    text-align: center;
+}
+
+#portrait{
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: block;
+    margin: 1em auto;
+    max-width: 250px;
+}
+
+#content-body {
+    background-color: var(--background-color);
+    color: var(--on-surface-color);
+    overflow-y: scroll;
+}
+
+#content-body > div:first-of-type{
+    margin-top: 1em;
+}
+
+.carousel{
+    max-width: 1200px;
+    max-height: 220px;
+    border: 3px solid #ddd;
+    margin-bottom: 1em;
+}
+
+.carousel-caption{
+    text-align: left;
+    align-items: baseline;
+}
