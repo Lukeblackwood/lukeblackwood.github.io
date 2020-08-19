@@ -1,59 +1,767 @@
-:root {
-    /*This is the color palette (ignore errors)*/
-    --primary-color: #BB86FC;
-    --primary-color-var: #3700B3;
-    --secondary-color: #03DAC6;
-    --background-color: #000000;
-    --surface-color: #121212;
-    --error-color: #CF6679;
-    --on-primary-color: #000000;
-    --on-secondary-color: #000000;
-    --on-background-color: #FFFFFF;
-    --on-surface-color: #FFFFFF;
-    --on-error-color: #000000;
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION INDEX**
+    0 -- Root Properties;
+    1 -- Global Breakpoint Properties;
+    2 -- Tablet and smaller breakpoints Properties; (aka: max-width: 991px);
+        2.1 - ...
+        2.2 - ...
+    3 -- Notebook and larger breakpoints Properties; (aka: min-width: 1200px);
+        3.1 - Sidebar Styling Properties;
+        3.2 - ...
+        3.3 -
+    4 - Special Breakpoints Properties;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    0 -- Root Properties;
+        These properties apply to everything in the page. Mostly useful for variable declarations.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    :root {
+        /*This is the color palette (ignore errors)*/
+        --primary-color: #fc7968;
+        --primary-color-var: #a01503;
+        --primary-color-darker: #cc0000;
+        --primary-color-muted: #660000;
+        --primary-color-muted-minus: #990000;
+        --secondary-color: #03DAC6;
+        --background-color: #0d0d0d;
+        --lighter-surface-color:  #262626;
+        --surface-color: #121212;
+        --error-color: #CF6679;
+        --on-primary-color: #000000;
+        --on-secondary-color: #000000;
+        --on-background-color: #ffffff;
+        --on-surface-color: #dddddd;
+        --on-error-color: #000000;
+        --disabled-sidebar-color: #737373;
+        --disabled-sidebar-hover: #bfbfbf;
+        --min-fontsize-text: 16px;
+        --max-fontsize-text: 16px;
+        --min-fontsize-h1: 0px;
+        --max-fontsize-h1: 36px;
+        --min-fontsize-h2: 0px;
+        --max-fontsize-h2: 28px;
+        --min-fontsize-smalltext: 0px;
+        --max-fontsize-smalltext: 0px;
+    }
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    1 -- Global Breakpoint Properties;
+        These properties apply to all breakpoints. These should define elements that don't have special properties based on breakpoint (or, at least, define the properties that do not change when breakpoint
+         changes).
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    ul{
+        list-style-type: none;
+    }
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2 -- Tablet and smaller breakpoints Properties; (aka: max-width: 991px);
+        These properties apply to breakpoints smaller than 992px.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+@media(max-width: 991px){
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2.1 - Global Mobile Properties;
+        These properties apply to all layout elements.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+    body{
+        overflow-x: none;
+        background-color: var(--primary-color);
+        background-size: 100vw 250px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    li{
+        float: left;
+    }
+
+    li a{
+        display: block;
+    }
+
+    .mobile-unfriendly{
+        display: none;
+    }
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2.2 - Mobile 'Sidebar' Properties;
+        In mobile view, the 'Sidebar' is mostly an horizontal stripe containing the portrait, the stylized header ('This is Blackwood.') and a few design elements.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    #sidebar{
+        padding: 0;
+        height: 200px;
+        background-image: url("resources/sidebarbg-mobile.png");
+        position: relative;
+        z-index: 2;
+        }
+
+    @media(orientation: landscape){
+        #sidebar{
+            background-image: url("resources/sidebarbg-mobile-landscape.png");
+            }
+        }
+
+    #portrait-mobile{
+        position: relative;
+        display: block;
+        border: 2px solid var(--primary-color-darker);
+        border-radius: 50%;
+        max-width: 200px;
+        margin: 0px auto;
+        z-index: 5;
+        transform: translate(0, -30px);
+        box-shadow:0px 0px 10px 2px var(--primary-color-muted);
+    }
+
+    .blackwood-header{
+        position: relative;
+        color: white;
+        transform: translate(0,185px);
+        z-index: 6;
+    }
+
+     #sidebar-this-is{
+        font-size: 28px;
+        letter-spacing: 10px;
+        transform: translate(0px, 210px);
+        margin-left: calc(50vw - 150px);
+        padding-left: 50px;
+     }
+
+    #sidebar-blackwood{
+        margin-left: calc(50vw - 150px);
+        font-size: 58px;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+    #sidebar-blackwood::first-letter{
+        background-color: var(--on-background-color);
+        color: var(--background-color);
+        font-weight: 500;
+    }
+
+    #sidebar hr{
+        position: relative;
+        z-index: 4;
+        width: 100vw;
+        background-color: var(--primary-color-darker);
+        transform: translate(0, -118px);
+        margin: 0;
+        box-shadow: 0px 0px 10px 2px var(--primary-color-muted);
+    }
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2.3 - Mobile Content Body Properties;
+        These properties apply to mobile content body.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    #content-body{
+        position: relative;
+        padding-top: 100px;
+        background-color: var(--surface-color);
+        background-image: url(resources/sidebarbg.png);
+        z-index: 1;
+        height: calc(100vmax - 250px);
+    }
+
+    .pfp-underline{
+        padding-top: 1px;
+        font-size: 22px;
+        color: var(--on-surface-color);
+        margin-left: calc(50vw - 113px);
+        font-weight: 300;
+    }
+
+    .pfp-underline #stylish{
+        color: var(--primary-color-darker);
+        text-shadow: -2px 2px 10px var(--primary-color-darker);
+    }
+
+    .pfp-underline #personal > .p{
+        background-color: var(--on-surface-color);
+        color: var(--surface-color);
+        font-weight: 400;
+    }
+
+    @keyframes dot-blink{
+        0%{
+            background-color: var(--on-surface-color);
+            color: var(--surface-color);
+        }
+
+        49%{
+            background-color: var(--on-surface-color);
+            color: var(--surface-color);
+        }
+
+        50%{
+                background-color: var(--surface-color);
+                color: var(--on-surface-color);
+        }
+
+        100%{
+            background-color: var(surface-color);
+            color: var(--on-surface-color);
+        }
+    }
+    .dot-animated{
+        animation-name: dot-blink;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+    }
+
+    .dot-expand-animation{
+        animation-name: dot-expand-animation;
+        animation-duration: 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes dot-expand-animation{
+        0%{
+            border: 1px solid var(--on-surface-color);
+        }
+        25%{
+            border: 1px solid var(--on-surface-color);
+            padding-right: 10px;
+        }
+        50%{
+            border: 1px solid var(--on-surface-color);
+            padding-right: 15px;
+        }
+        75%{
+            border: 1px solid var(--on-surface-color);
+            padding-right: 18px;
+            background-color: var(--on-surface-color);
+            color: var(--surface-color);
+        }
+        99%{
+            border: 1px solid var(--on-surface-color);
+            padding-right: 20px;
+            background-color: var(--on-surface-color);
+            color: var(--surface-color);
+        }
+        100%{
+            border: 1px solid var(--on-surface-color);
+            padding-right: 0px;
+            background-color: var(--on-surface-color);
+            color: var(--surface-color);
+        }
+    }
+
+    .pfp-underline #fun > .smiley{
+        display: none;
+        color: var(--surface-color);
+        margin-left: 5px;
+    }
+
+
+    .content-body-text{
+        padding-left: 5vw;
+        padding-right: 5vw;
+        font-size: 17px;
+        font-weight: 300;
+        color: var(--on-surface-color);
+        text-align: justify;
+        margin-top: 1vmax;
+        margin-bottom: 5vmax;
+    }
+
+    .about-btn{
+        font-size: 22px;
+        font-weight: 300;
+        letter-spacing: 5px;
+        color: var(--primary-color-darker);
+        border: 1px solid var(--primary-color-darker);
+        padding-top:15px;
+        padding-bottom: 15px;
+        padding-left: calc(45vw - 70px);
+        padding-right: calc(45vw - 70px);
+        box-shadow: 0px 0px 3px 1px var(--primary-color-muted);
+    }
+
+    @media(orientation: landscape){
+        .about-btn{
+        padding-left: calc(47vw - 70px);
+        padding-right: calc(47vw - 70px);
+        }
+    }
+
+
+    .about-btn  a{
+        color: var(--primary-color-darker);
+        text-decoration: none;
+    }
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2.4 - 'Mobile Social Media Sidebar' Properties;
+        These properties apply to the Mobile ver. of the Social Media Sidebar which ,in the mobile viewports, is a top navbar.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    #social-media-sidebar{
+        background-image: url("resources/topbar-mobile.png");
+        border-bottom: 1px solid var(--primary-color-darker);
+        box-shadow: 0px 0px 10px 2px var(--primary-color-muted);
+        height: 50px;
+        padding-top: 10px;
+    }
+
+    @media(orientation: landscape){
+        #social-media-sidebar{
+            background-image: url("resources/topbar-mobile-landscape.png");
+            }
+        }
+
+    #social-media-links ul{
+        margin: 0;
+        padding: 0;
+        padding-left: calc(50vw - 105px);
+    }
+
+
+    #social-media-links  li a{
+        text-decoration: none;
+        padding-top: 2px;
+    }
+
+    .vr{
+      width: 1px;
+      height: 32px;
+      background-color: var(--disabled-sidebar-hover);
+      display: block;
+      float: left;
+      margin: 0 25px;
+    }
+
+    .mobile-menu-toggle-button ion-icon{
+        position: relative;
+        left: calc(50vw - 135px);
+        border: 1px solid var(--disabled-sidebar-hover);
+        border-radius: 2px;
+    }
+
+    #social-media-sidebar ion-icon{
+        color: var(--disabled-sidebar-hover);
+        font-size: 28px;
+    }
 }
 
-#sidebar {
-    background-color: var(--surface-color);
-    border-right: 1px solid;
-    border-right-color: var(--primary-color);
-    color: var(--on-background-color);
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    2.5 - Mobile Menu Properties
+        These properties apply to the Mobile ver. of the Social Media Sidebar which ,in the mobile viewports, is a top navbar.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    #mobile-menu{
+        background-color: red;
+        background-image: url("resources/sidebarbg.png");
+        display: none;
+        min-height: 100vmax;
+        position: absolute;
+        z-index: 10;
+    }
+
+
+    #mobile-menu-navbar{
+        height: 50px;
+        background-color: var(--surface-color);
+        background-image: url("resources/topbar-mobile.png");
+        border-bottom: 1px solid var(--primary-color-darker);
+        box-shadow: 0px 0px 10px 2px var(--primary-color-muted);
+    }
+
+    #mobile-menu-navbar > .navbar-item{
+        display: block;
+        float: left;
+    }
+
+    #navbar-blackwood{
+        font-size: 32px;
+        color: var(--on-background-color);
+        letter-spacing: 2px;
+        margin-top: 0px;
+        font-weight: 400;
+    }
+
+    #navbar-brand{
+        font-size: 32px;
+        color: var(--on-primary-color);
+        background-color: var(--on-background-color);
+        font-weight: 500;
+        margin-top: 5px;
+        padding-top: -1px;
+        padding-right: 2px;
+        padding-left: 2px;
+        line-height: 38px;
+        margin-left: calc(50vw - 105px);
+    }
+
+    .mobile-menu-close-button ion-icon{
+        margin-top: 10px;
+        position: relative;
+        left: calc(50vw - 131px);
+        border: 1px solid var(--disabled-sidebar-hover);
+        border-radius: 2px;
+    }
+
+     #mobile-menu-navbar ion-icon{
+        color: var(--disabled-sidebar-hover);
+        font-size: 28px;
+    }
+
+    #mobile-menu-portrait{
+        min-height: calc(100vh - 50px);
+        min-width: 41vw;
+    }
+
+    #mobile-menu-links{
+        min-height: calc(100vh - 50px);
+        overflow: hidden;
+        min-width: 59vw;
+    }
+
+    #mobile-menu-portrait > img{
+        margin-top: calc(50vmax - 265px);
+        margin-left: calc(50% - 65px);
+        border: 1px solid var(--primary-color-darker);
+        box-shadow: 0px 0px 10px 2px var(--primary-color-muted);
+    }
+
+    dl{
+        margin-top: calc(50vmax - 240px);
+    }
+
+    #mobile-menu-links dt{
+        margin-left: 5%;
+        font-size: 38px;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+    #mobile-menu-links dt > a{
+        color: var(--on-surface-color);
+        text-decoration: none;
+    }
+
+    #mobile-menu-links dt::first-letter{
+        background-color: var(--on-surface-color);
+        color: var(--surface-color);
+        font-weight: 500;
+    }
+
+    #mobile-menu-links dd{
+        font-weight: 300;
+        margin-left: 5%;
+        color: var(--on-surface-color);
+        transform: translate(20px, 70px);
+    }
+
+    #mobile-menu-links dd::first-letter{
+        background-color: var(--surface-color);
+    }
+
+    #mobile-menu-links hr{
+            background-color: var(--primary-color-darker);
+            box-shadow: 0px 0px 3px 0.4px var(--primary-color-muted);
+            border: none;
+            height: 0.1px;
+            margin: 0px;
+            width: 90%;
+            margin-top: 7px;
+            margin-bottom: 7px;
+            margin-left: 0%;
+    }
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+    3 -- Notebook and larger breakpoints Properties; (aka: min-width: 1200px);
+        These properties apply to breakpoints larger than 1200px.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+@media (min-width: 992px){
+    body{
+        background-image: url("resources/bg.png");
+        background-color: var(--background-color);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-size: var(--min-fontsize-text);
+    }
+
+    hr{
+        background-color: var(--on-surface-color);
+        height: 0.1px;
+        margin-top: 0vh;
+        margin-bottom: 0.5vh;
+    }
+
+    #everything{
+        overflow-y: visible;
+    }
+
+    .row{
+        overflow-y: visible;
+    }
+
+     .sticky-sidebar{
+        align-self: flex-start;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+        z-index:1010;
+        min-height: 1px;
+        height:100vh;
+    }
+
+    .desktop-unfriendly{
+        display:none;
+    }
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    **NAVIGATION HEADER*
+        3.1 - Sidebar Styling Properties;
+            These properties style the navigation Sidebar.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    #sidebar {
+        background-image: url("resources/sidebarbg.png");
+        background-color: var(--surface-color);
+        border-right: 1px solid;
+        border-right-color: var(--primary-color);
+        border-left: 1px solid;
+        border-left-color: var(--primary-color);
+        color: var(--on-background-color);
+        margin: 0vh;
+        margin-left: 3vw;
+        min-width: 230px;
+        max-width: 230px;
+    }
+
+    #sidebar:hover{
+        border-color: var(--primary-color-darker);
+        box-shadow: 0px 0px 25px 1px var(--primary-color-muted);
+    }
+
+    #sidebar-this-is{
+        font-size: 26px;
+        letter-spacing: 7px;
+        margin-top: 3vh;
+        text-align: center;
+    }
+
+    #sidebar-blackwood{
+        font-size: 36px;
+        text-align: center;
+        transform: translate(0vw, -1.8vh);
+    }
+
+    #sidebar-blackwood::first-letter{
+        background-color: var(--on-background-color);
+        color: var(--background-color);
+    }
+
+    #sidebar > p{
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        margin: 0;
+        text-align: center;
+        transform: translate(0vw, -0.8vh);
+    }
+
+    #sidebar > hr{
+        background-color: var(--on-background-color);
+        height: 0px;
+        line-height: 0;
+        margin-top: 0;
+        width: 95%;
+    }
+
+    #portrait-desktop{
+        border: 2px solid #ddd;
+        border-radius: 50%;
+        max-width: 250px;
+        display: block;
+        margin: 0px auto;
+        transform: translate(0vw, -1.8vh);
+        filter: grayscale(100%);
+    }
+
+    #portrait-desktop:hover{
+        box-shadow: 0px 0px 40px -20px var(--on-background-color);
+        filter:grayscale(0%);
+    }
+
+    #sidebar > ul{
+        margin: 0vh 1.5px 0vh 2px;
+        padding-left: 0px;
+    }
+
+    #sidebar > ul > hr{
+            background-color: var(--lighter-surface-color);
+            border: none;
+            height: 0.1px;
+            margin: 0vh 0vw 7px 0vw;
+    }
+
+    #sidebar > ul > li > a{
+        color: var(--disabled-sidebar-color);
+        font-weight: 350;
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        margin-left: 3px;
+    }
+
+    #sidebar > ul > li.sidebar-active > a{
+        color:var(--on-background-color);
+        font-size: 20px;
+        font-weight: 450;
+        letter-spacing: -0.1px;
+    }
+
+
+    #sidebar > ul > li.sidebar-active::before{
+        content:"";
+        display:block;
+        width: 8px;
+        height: 1px;
+        background: var(--primary-color-darker);
+        box-shadow: 0px 0px 1.5px 0.4px var(--primary-color-muted);
+        position:relative;
+        right: 8px;
+        top: 17px;
+    }
+
+
+    #sidebar > ul > li.sidebar-active> a:hover{
+        text-shadow: 0px 0px 10px var(--on-surface-color);
+    }
+
+   #sidebar > ul > hr.sidebar-active{
+        background-color: var(--primary-color-darker);
+        box-shadow: 0px 0px 3px 0.4px var(--primary-color-muted);
+    }
+
+    #sidebar > ul > li.sidebar-disabled > a:hover{
+        color: var(--disabled-sidebar-hover);
+        text-shadow: 0px 0px 8px var(--on-surface-color);
+    }
+
+    .vertical-divider{
+        display: inline;
+        width: 1px;
+        height: 40px;
+        background: var(--disabled-sidebar-color);
+        border-left: 1px solid var(--disabled-sidebar-color);
+    }
+    /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    **NAVIGATION HEADER*
+        3.2 - Content Styling Properties;
+            These properties style the Content Body.
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    #content-body {
+        color: var(--on-surface-color);
+        max-width: 1400px;
+        padding-left: 32px;
+        padding-top: 15px;
+        margin-right: 10px;
+        height: 100%;
+        margin-top: 20px;
+    }
+
+    #content-body > h2{
+        margin-top: 30px;
+    }
+    .carousel{
+        box-shadow: 0px 0px 3px 2px var(--on-surface-color);
+        filter: grayscale(100%);
+        max-width: 100%;
+        max-height: 800px;
+    }
+
+    .carousel-caption{
+        text-align: left;
+        align-items: baseline;
+        transform: translate(-20%, 30%);
+    }
+
+     .carousel-caption a{
+        text-decoration: none;
+        color: var(--on-surface-color);
+    }
+
+    .carousel:hover{
+        filter: grayscale(0%);
+        border: 1px solid var(--primary-color-darker);
+        box-shadow: 0px 0px 10px 2px var(--primary-color-muted);
+
+    }
+    /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    **NAVIGATION HEADER*
+        3.3 - Social Media Sidebar Styling Properties;
+            These properties style the Social Media Sidebar.
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    #social-media-links{
+        min-width: 60px;
+        max-width: 70px;
+        background-color: var(--on-surface-color);
+        height: calc(200 + 10vh);
+        margin-top: 33vh;
+        border: 1px solid var(--disabled-sidebar-color);
+        box-shadow: 0px 0px 10px 1px var(--disabled-sidebar-color);
+    }
+
+    #social-media-links > ul{
+        padding: 0;
+        padding-top: 30%;
+        padding-bottom: 30%;
+        margin: 0;
+        margin-top: 10%;
+    }
+
+    #social-media-links hr{
+        width: 80%;
+        margin: 1.5vh 10%;
+    }
+
+    #social-media-links li{
+        margin-left: calc(50% - 16px);
+        margin-right: calc(50% - 16px);
+    }
+
+    #social-media-links li a{
+        color: var(--disabled-sidebar-color);
+        text-decoration: none;
+        font-size: 32px;
+    }
+
+        #social-media-links li a:hover{
+        color: black;
+    }
 }
 
-#sidebar > h1{
-    text-align: center;
-}
-
-#sidebar > p{
-    text-align: center;
-}
-
-#portrait{
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    display: block;
-    margin: 1em auto;
-    max-width: 250px;
-}
-
-#content-body {
-    background-color: var(--background-color);
-    color: var(--on-surface-color);
-    overflow-y: scroll;
-}
-
-#content-body > div:first-of-type{
-    margin-top: 1em;
-}
-
-.carousel{
-    max-width: 1200px;
-    max-height: 220px;
-    border: 3px solid #ddd;
-    margin-bottom: 1em;
-}
-
-.carousel-caption{
-    text-align: left;
-    align-items: baseline;
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**NAVIGATION HEADER*
+        4 -- Special Breakpoints Properties;
+        These properties apply only to specific breakpoints.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+@media(min-width: 992px) and (max-width:1200px){
+    #content-body{
+        margin-top: 50px;
+    }
+    #content-body h2{
+        margin-top:70px;
+    }
 }
